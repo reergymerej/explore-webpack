@@ -22,4 +22,15 @@ module.exports = {
       banner: 'Hey, look here.  I entered a comment in each of my chunks.',
     })
   ],
+
+  module: {
+    rules: [
+      {
+        // for any file that matches this
+        test: /\.txt$/,
+        // use raw-loader
+        use: 'raw-loader',
+      },
+    ],
+  },
 }

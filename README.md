@@ -11,4 +11,5 @@ At a minimum, you need a static output.filename.  If you have multiple chunks,
 though, you need to use
 [substitutions] to generate unique names.
 
+[01.basic]: https://github.com/reergymerej/explore-webpack/tree/01.basic
 [substitutions]: https://webpack.js.org/configuration/output/#output-filename

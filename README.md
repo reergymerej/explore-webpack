@@ -1,8 +1,7 @@
 # webpack
 
 Webpack is complex and it is often jumped into too quickly.  This shows step by
-step how it works.  Start with
-[../01.basic]().
+step how it works.  Start with this [01.basic] branch.
 
 ## 04.entry-points
 
@@ -54,3 +53,7 @@ output: {
       bundle.js
     bundle.js
 ```
+
+
+
+[01.basic]: https://github.com/reergymerej/explore-webpack/tree/01.basic

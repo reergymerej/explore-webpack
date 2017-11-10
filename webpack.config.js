@@ -8,5 +8,16 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'funktacular.bundle.js'
-  }
+  },
+
+  module: {
+    rules: [
+      {
+        // for any file that matches this
+        test: /\.txt$/,
+        // use raw-loader
+        use: 'raw-loader',
+      },
+    ],
+  },
 }

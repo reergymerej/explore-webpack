@@ -18,3 +18,8 @@ funktacular.bundle.js  2.63 kB       0  [emitted]  main
    [1] ./src/i-am-included.js 30 bytes {0} [built]
  ```
 
+
+### 03.plugins
+
+
+Look at the built in plugins and how they affect the resulting bundle.

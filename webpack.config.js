@@ -12,12 +12,19 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     // Use the chunk name to determine the filename (and relative path).
-    filename: '[name].js'
+    filename: '[name].js',
+    publicPath: "https://cdn.foo.com/",
   },
 
   plugins: [
   ],
 
   module: {
+    rules: [
+      {
+        test: /\.html$/,
+        use: 'html-loader',
+      },
+    ],
   },
 }

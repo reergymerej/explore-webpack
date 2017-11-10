@@ -2,7 +2,7 @@
 
 Webpack is complex and it is often jumped into too quickly.  This shows step by
 step how it works.  Start with
-[01.basic]().
+[../01.basic]().
 
 ## 04.entry-points
 

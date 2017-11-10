@@ -1,7 +1,7 @@
 # webpack
 
 Webpack is complex and it is often jumped into too quickly.  This shows step by
-step how it works.  Start with this [01.basic] branch.
+step how it works.  Start with the [01.basic] branch.
 
 ## 04.entry-points
 

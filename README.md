@@ -1,66 +1,56 @@
 # webpack
 
 Webpack is complex and it is often jumped into too quickly.  This shows step by
-step how it works.  Check the branches.
+step how it works.  Start with
+[01.basic]().
 
-## Branches
+## 04.entry-points
 
-### Basic
+This specifies two entry points.  And uses the `[name]` variable to generate
+unique outputs.  If there is one output, the names will conflict.
 
-This is the most basic setup.  There are no plugins or loaders, just an input
-file and an output.
-
-When building - `yarn webpack` -  you can see the bundle is created with the imported files.
-
-```
-funktacular.bundle.js  2.63 kB       0  [emitted]  main
-   [0] ./src/index.js 57 bytes {0} [built]
-   [1] ./src/i-am-included.js 30 bytes {0} [built]
- ```
-
-### 02.loaders
-
-[Loaders](https://webpack.js.org/concepts/#loaders) convert files into modules
-Webpack can understand.
-
-You can see how the loaders convert stuff into Webpack modules in this excerpt
-from the bundle.
+Each entry is its own graph and the emitted bundle will have the same webpack
+boostrap code at the top then unique webpack bundles for each of the files in
+the dependency graph.
 
 ```
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+entry: {
+  main: path.resolve(__dirname, 'src/index.js'),
+  section1: path.resolve(__dirname, 'src/section1/index.js'),
+},
 
-__webpack_require__(1)
-console.log('I am index.js.')
+output: {
+  path: path.resolve(__dirname, 'dist'),
+  filename: '[name].bundle.js'
+},
+```
 
+This config results in bundles placed here.
 
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+```
+▼ dist/
+    main.bundle.js
+    section1.bundle.js
+```
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__some_text_txt__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__some_text_txt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__some_text_txt__);
+To maintain a similar file structure, we can change it to.
 
-console.log('I am included.')
+```
+entry: {
+  bundle: path.resolve(__dirname, 'src/index.js'),
+  'section1/bundle': path.resolve(__dirname, 'src/section1/index.js'),
+},
 
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = "I was imported!\n"
-
-/***/ })
-/******/ ]);
-
+output: {
+  path: path.resolve(__dirname, 'dist'),
+  filename: '[name].js'
+},
 ```
 
 
-### 03.plugins
-
-
-Look at the built in plugins and how they affect the resulting bundle.  
+```
+▼ dist/
+  ▼ section1/
+      bundle.js
+    bundle.js
+```

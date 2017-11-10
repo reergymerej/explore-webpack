@@ -2,35 +2,22 @@ const path = require('path')
 const webpack = require('webpack')
 
 module.exports = {
-  // This is the entry point webpack will use to build the dependency graph.
-  entry: path.resolve(__dirname, 'src/index.js'),
+  // Use multiple entry points.  Each will generate its own dependency graph
+  // with chunks named "bundle" and "section1/bundle."
+  entry: {
+    bundle: path.resolve(__dirname, 'src/index.js'),
+    'section1/bundle': path.resolve(__dirname, 'src/section1/index.js'),
+  },
 
-  // The results will go out to this bundle.
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'funktacular.bundle.js'
+    // Use the chunk name to determine the filename (and relative path).
+    filename: '[name].js'
   },
 
   plugins: [
-    // This minifies the js bundle.  Cool.
-    // There are a bunch of other built in plugins too.
-    // https://webpack.js.org/plugins/
-    new webpack.optimize.UglifyJsPlugin(),
-
-    // This adds a banner.
-    new webpack.BannerPlugin({
-      banner: 'Hey, look here.  I entered a comment in each of my chunks.',
-    })
   ],
 
   module: {
-    rules: [
-      {
-        // for any file that matches this
-        test: /\.txt$/,
-        // use raw-loader
-        use: 'raw-loader',
-      },
-    ],
   },
 }

@@ -5,7 +5,7 @@ step how it works.  Check the branches.
 
 ## Branches
 
-### Basic
+### 01.basic
 
 This is the most basic setup.  There are no plugins or loaders, just an input
 file and an output.
